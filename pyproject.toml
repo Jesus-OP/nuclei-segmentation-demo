@@ -7,6 +7,7 @@ dependencies = ["numpy", "scipy", "scikit-image", "pandas", "tifffile", "matplot
 
 [project.optional-dependencies]
 models = ["stardist", "tensorflow"]   # baseline preentrenado (revisar licencia de pesos)
+train = ["torch"]                     # U-Net (scripts/train.py, predict_unet.py)
 dev = ["pytest", "ruff"]
 
 [build-system]
