@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import tifffile
 
-from bioseg.evaluation import drop_small, evaluate_dir, image_counts, summarize
+from bioseg.evaluation import drop_small, evaluate_dir, image_counts, object_table, summarize
 
 
 def _scene():
@@ -34,6 +34,25 @@ def test_summarize_pools_counts():
     s = summarize([a, b])
     assert abs(s["all"]["AP@0.5"] - 1 / 3) < 1e-9     # pooled 1/(1+1+1), not mean(1, 0)
     assert abs(s["all"]["F1@0.5"] - 0.5) < 1e-9
+
+
+def test_object_table():
+    gt = np.zeros((20, 20), dtype=np.uint16)
+    gt[0:5, 5:10] = 1          # at the top border
+    gt[10:15, 2:6] = 2
+    gt[10:15, 6:10] = 3        # touches 2
+    pred = np.zeros_like(gt)
+    pred[10:15, 2:10] = 7      # 2 and 3 merged -> at most one of them found
+    t = object_table(gt, pred).set_index("label")
+    assert list(t["touching"]) == [False, True, True]
+    assert list(t["at_border"]) == [True, False, False]
+    assert not t.loc[1, "found"] and t["found"].sum() <= 1
+
+
+def test_matched_iou():
+    gt = _scene()
+    s = summarize([image_counts(gt, gt)])
+    assert s["all"]["IoU_matched@0.5"] == 1.0
 
 
 def test_evaluate_dir(tmp_path):
