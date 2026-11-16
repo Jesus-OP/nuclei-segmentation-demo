@@ -1,0 +1,9 @@
+data/
+runs/
+*.tif
+*.tiff
+__pycache__/
+.venv/
+*.egg-info/
+.pytest_cache/
+negocio/

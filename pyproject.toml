@@ -1,0 +1,20 @@
+[project]
+name = "bioseg"
+version = "0.1.0"
+description = "Instance segmentation + quantification demo for fluorescence microscopy (research use only)"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "scikit-image", "pandas", "tifffile", "matplotlib"]
+
+[project.optional-dependencies]
+models = ["stardist", "tensorflow"]   # baseline preentrenado (revisar licencia de pesos)
+dev = ["pytest", "ruff"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
