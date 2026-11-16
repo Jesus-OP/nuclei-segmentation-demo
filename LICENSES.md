@@ -3,8 +3,9 @@
 | Recurso | Licencia | Fuente | Comprobado el |
 |---|---|---|---|
 | BBBC039v1 (imagenes, mascaras, splits) | CC0 1.0 (dominio publico; los contribuidores renuncian a todos los derechos) | https://bbbc.broadinstitute.org/BBBC039 | 2026-11-16 |
-| StarDist (codigo) | BSD-3-Clause (confirmar) | https://github.com/stardist/stardist | |
-| StarDist 2D_versatile_fluo (pesos) | (confirmar datos de entrenamiento) | | |
+| StarDist (codigo, v0.9.2) | BSD-3-Clause (LICENSE del paquete instalado: (c) 2018-2025 U. Schmidt, M. Weigert) | https://github.com/stardist/stardist | 2026-11-17 |
+| StarDist 2D_versatile_fluo (pesos) | BSD-3-Clause: licencia del repo que los aloja (`stardist-models`, release v0.1); no hay licencia especifica del modelo. Se descargan en tiempo de ejecucion, no se redistribuyen | https://github.com/stardist/stardist-models/releases/download/v0.1/python_2D_versatile_fluo.zip (sha256 4ad678d0...c3dd) | 2026-11-17 |
+| Datos de entrenamiento de 2D_versatile_fluo | Subconjunto de DSB 2018 stage1_train (segun el README de StarDist y la release 0.1.0) = BBBC038v1, **CC0** | https://bbbc.broadinstitute.org/BBBC038 | 2026-11-17 |
 
 ## Citas requeridas / recomendadas
 
@@ -19,3 +20,13 @@
 
 Nota: el decodificado de mascaras de `scripts/download_data.py` es codigo propio (no copia
 el gist de ejemplo de los autores, que no declara licencia).
+
+**StarDist** (si se usa el baseline preentrenado), citar:
+- Schmidt U, Weigert M, Broaddus C, Myers G. Cell Detection with Star-convex Polygons. MICCAI 2018.
+- Datos de entrenamiento: "We used image set BBBC038v1, available from the Broad Bioimage
+  Benchmark Collection [Caicedo et al., Nature Methods, 2019]."
+
+Conclusion (2026-11-17): StarDist 2D_versatile_fluo es compatible con uso comercial
+(codigo y pesos BSD-3, datos CC0). Riesgo pendiente de revisar (no de licencia): DSB 2018 y
+BBBC039 proceden en parte de la misma fuente (Broad); si alguna imagen de test de BBBC039
+estuviera en el entrenamiento de StarDist, su resultado en test seria optimista.
