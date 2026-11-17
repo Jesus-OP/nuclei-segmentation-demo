@@ -130,3 +130,18 @@ python scripts/evaluate.py
 python scripts/quantify.py --labels runs/unet/pred/test     # opcional
 python scripts/report.py
 ```
+
+## U-Net (2026-11-17, pesos de Kaggle)
+- Entrenamiento: 150 épocas, 31 min en GPU de Kaggle. Mejor en val: época 45, AP@0.5:0.95 =
+  0,717 (meseta ~0,69 desde la época 30). Val reproducida en local: idéntica (0,717).
+- Test (evaluado una vez, post-proceso por defecto): AP@0.5 0,881 · AP@0.5:0.95 0,720 ·
+  F1@0.5 0,937 (≥ 25 px: 0,927 / 0,764 / 0,962). Entre Otsu y StarDist.
+- Detecta más que StarDist (FN 337 frente a 487; micronúcleos 29 % frente a 4 %) pero con más
+  falsos positivos (389 frente a 56, 174 de ellos < 25 px). Mejor recuento por imagen
+  (r = 0,994, error mediano +1,3 %).
+- Desenfoque σ = 4: 0,72 → 0,43, la más sensible de las tres.
+- **No** he ajustado el post-proceso (`min_size`, `interior_thr`) después de ver test. Siguiente
+  paso razonable: ajustarlo en val (subir `min_size` quitaría parte de los falsos positivos
+  pequeños, a costa de micronúcleos) y, si se reentrena, añadir desenfoque como aumento.
+- `evaluate.py` añade ahora TP/FP/FN@0.5 a `results.csv`; `robustness_blur.py --methods`
+  permite añadir métodos uno a uno.

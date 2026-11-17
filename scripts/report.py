@@ -32,7 +32,8 @@ COLORS = {"Otsu + watershed": "#2a78d6",
 SHORT = {"Otsu + watershed": "Otsu + watershed",
          "StarDist 2D_versatile_fluo (sin ajustar)": "StarDist (preentrenado)",
          "U-Net (entrenada en BBBC039)": "U-Net propia"}
-EXTRA_COLORS = ["#eda100", "#6250d6", "#e87ba4"]  # slots 4+, only for methods added later
+UNET = "U-Net (entrenada en BBBC039)"
+EXTRA_COLORS =["#eda100", "#6250d6", "#e87ba4"]  # slots 4+, only for methods added later
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e4e3df"
 
 
@@ -238,16 +239,24 @@ def fig_recall(rec: pd.DataFrame, methods: list[str]) -> str:
     ax.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
     ax.grid(axis="x", color=GRID, lw=0.8)
     ax.set_axisbelow(True)
-    ax.legend(loc="lower right", frameon=False, fontsize=9)
+    ax.legend(loc="lower left", bbox_to_anchor=(0, 1.0), ncol=len(methods), frameon=False,
+              fontsize=9)
     return png(fig)
 
 
 def fig_blur(blur: pd.DataFrame) -> str:
     fig, ax = plt.subplots(figsize=(6.5, 3.4))
+    ends = []
     for m, g in blur.groupby("method", sort=False):
-        ax.plot(g["sigma"], g["all_AP@0.5:0.95"], color=color(m), lw=2, marker="o", ms=6)
-        ax.text(g["sigma"].iloc[-1] + 0.1, g["all_AP@0.5:0.95"].iloc[-1], short(m),
-                va="center", fontsize=9, color=INK)
+        ax.plot(g["sigma"], g["all_AP@0.5:0.95"], color=color(m), lw=2, marker="o", ms=6,
+                label=short(m))
+        ends.append([g["all_AP@0.5:0.95"].iloc[-1], short(m)])
+    ends.sort()
+    for k in range(1, len(ends)):            # keep end labels >= 0.035 apart
+        ends[k][0] = max(ends[k][0], ends[k - 1][0] + 0.035)
+    for y, name in ends:
+        ax.text(blur["sigma"].max() + 0.15, y, name, va="center", fontsize=9, color=INK)
+    ax.legend(loc="lower left", frameon=False, fontsize=8)
     ax.set_xlabel("Desenfoque gaussiano añadido (σ, píxeles)")
     ax.set_ylabel("AP@0.5:0.95 (test)")
     ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: es(v, 2)))
@@ -335,6 +344,33 @@ def metrics_table(results: pd.DataFrame, variant: str) -> str:
     return f'<div class="tablewrap">{html_t}</div>'
 
 
+def tradeoff_bullets(results: pd.DataFrame, best: pd.Series, agree: pd.DataFrame) -> str:
+    """One summary bullet per method that finds more nuclei than the best one (fewer FN at
+    IoU >= 0.5) but scores lower AP: says where its AP goes (false positives)."""
+    r = results[results["status"] == "ok"].set_index(["method", "variant"])
+    a = agree.set_index("Método")
+    b = r.loc[(best["method"], "all")]
+    out = []
+    for m in r.index.get_level_values(0).unique():
+        if m == best["method"] or r.loc[(m, "all"), "FN@0.5"] >= b["FN@0.5"]:
+            continue
+        x, x25 = r.loc[(m, "all")], r.loc[(m, "ge25")]
+        txt = (f"<li><b>{short(m)}</b> detecta más núcleos que {short(best['method'])} "
+               f"({thousands(int(x['FN@0.5']))} no detectados frente a "
+               f"{thousands(int(b['FN@0.5']))}), pero genera más falsos positivos "
+               f"({thousands(int(x['FP@0.5']))} frente a {thousands(int(b['FP@0.5']))}; "
+               f"{thousands(int(x25['FP@0.5']))} si se quitan los objetos &lt; 25 px), "
+               "y por eso su AP es menor.")
+        if short(m) in a.index and short(best["method"]) in a.index:
+            xm, bm = a.loc[short(m)], a.loc[short(best["method"])]
+            if abs(xm["Error de recuento mediano"]) < abs(bm["Error de recuento mediano"]):
+                txt += (f" A cambio, su recuento por imagen es el más fiel (r = "
+                        f"{es(xm['Correlación de recuentos (r)'], 3)}, error mediano "
+                        f"{signed_pct(xm['Error de recuento mediano'])}).")
+        out.append(txt + "</li>")
+    return "".join(out)
+
+
 def overlap_section(runs: Path, results: pd.DataFrame, n_test: int) -> tuple[str, str]:
     """Metrics without the test images that are also in DSB 2018 stage1_train.
 
@@ -400,9 +436,25 @@ def build(args) -> str:
     b0 = blur[blur["sigma"] == 0].set_index("method")["all_AP@0.5:0.95"]
     bmax = blur[blur["sigma"] == blur["sigma"].max()].set_index("method")["all_AP@0.5:0.95"]
     drop = (b0 - bmax).sort_values()
-    blur_sentence = (f"Ante desenfoque simulado (σ = {blur['sigma'].max():g} px), "
-                     f"{short(drop.index[0])} pierde {es(drop.iloc[0], 2)} puntos de AP@0.5:0.95 y "
-                     f"{short(drop.index[-1])} {es(drop.iloc[-1], 2)}.")
+    blur_sentence = (f"Ante desenfoque simulado (σ = {blur['sigma'].max():g} px), el más "
+                     f"robusto es {short(drop.index[0])} (pierde {es(drop.iloc[0], 2)} puntos de "
+                     f"AP@0.5:0.95) y el más sensible {short(drop.index[-1])} "
+                     f"({es(drop.iloc[-1], 2)}).")
+    blur_detail = "; ".join(f"{short(m)} pasa de {es(b0[m], 2)} a {es(bmax[m], 2)}"
+                            for m in b0.index)
+    tradeoff_li = tradeoff_bullets(results, best, agree)
+    small = rec.set_index("Grupo de núcleos").loc["< 25 px (micronúcleos)", [short(m) for m in methods]]
+    small_best = f"{small.idxmax()}, detecta el {pct(small.max())}"
+    unet_ok = UNET in methods
+    unet_method = ("<li>U-Net propia (PyTorch, entrenada desde cero solo con el split de train): "
+                   "3 clases (fondo, interior, borde) + watershed; modelo elegido por "
+                   "AP@0.5:0.95 en val. Post-proceso con sus valores por defecto, sin ajustar "
+                   "en test.</li>") if unet_ok else ""
+    unet_limit = ("<li><b>U-Net entrenada con un solo conjunto.</b> Se entrenó solo con las "
+                  "100 imágenes de train de BBBC039 y sin simular desenfoque"
+                  + ("; por eso es la más sensible al desenfoque" if drop.index[-1] == UNET else "")
+                  + ". En datos de un cliente habría que reentrenarla o "
+                  "ajustarla con unas pocas imágenes anotadas suyas.</li>") if unet_ok else ""
     how = ("usado tal cual, sin ajustar a estos datos" if "sin ajustar" in best["method"]
            else "ajustado con train/val")
     pending = results.loc[results["status"] == "pendiente", "method"].unique()
@@ -440,6 +492,7 @@ detectados y núcleos pegados o fragmentados que se agrupan en un solo objeto), 
 <li>Los fallos se concentran en <b>núcleos pegados</b> ({pct(rb['Pegados a otro núcleo'])} detectados frente
 a {pct(rb['Aislados'])} de los aislados), <b>núcleos fragmentados</b> y <b>objetos diminutos</b>.
 {blur_sentence}</li>
+{tradeoff_li}
 {pending_li}
 </ul>
 {kpis}"""
@@ -479,10 +532,7 @@ a {pct(rb['Aislados'])} de los aislados), <b>núcleos fragmentados</b> y <b>obje
         "<p>BBBC039 no contiene campos claramente desenfocados, así que lo hemos simulado con "
         "un desenfoque gaussiano sobre las imágenes de test, sin reajustar ningún método:</p>" +
         figure_html(fig_blur(blur), "AP@0.5:0.95 frente al desenfoque añadido (σ en píxeles).") +
-        f"<p>Con σ = {blur['sigma'].max():g} px el método clásico pasa de "
-        f"{es(b0['Otsu + watershed'], 2)} a {es(bmax['Otsu + watershed'], 2)} y StarDist de "
-        f"{es(b0['StarDist 2D_versatile_fluo (sin ajustar)'], 2)} a "
-        f"{es(bmax['StarDist 2D_versatile_fluo (sin ajustar)'], 2)}.</p>",
+        f"<p>Con σ = {blur['sigma'].max():g} px: {blur_detail}.</p>",
         "<h2>Validez de la cuantificación</h2>"
         "<p>La tabla por núcleo (área, posición, excentricidad, solidez, intensidad media y "
         "máxima) se entrega en CSV, uno por imagen. Comparando los resúmenes por imagen con los "
@@ -505,22 +555,22 @@ a {pct(rb['Aislados'])} de los aislados), <b>núcleos fragmentados</b> y <b>obje
         "anotación separa cada fragmento; los métodos tienden a agruparlos. Parte de ese error "
         "es discutible incluso entre anotadores.</li>"
         "<li><b>Objetos diminutos.</b> Los objetos &lt; 25 px son micronúcleos o restos anotados a "
-        "propósito; ningún método los detecta bien. Si son relevantes para el estudio, hace "
-        "falta un modelo específico.</li>"
+        f"propósito; ningún método los detecta bien (el que más, {small_best}). Si son "
+        "relevantes para el estudio, hace falta un modelo específico.</li>"
         + overlap_li +
         "<li><b>Desenfoque solo simulado.</b> El desenfoque gaussiano es una aproximación; el "
         "desenfoque óptico real y la saturación pueden comportarse distinto.</li>"
         "<li><b>Sin tamaño de píxel.</b> La página del dataset no lo indica: las áreas van en "
         "píxeles. Con el tamaño de píxel del microscopio se convierten a µm².</li>"
-        "<li><b>U-Net pendiente.</b> La fila del modelo entrenado se completará cuando termine "
-        "el entrenamiento.</li></ul>",
+        + "".join(f"<li><b>{short(m)} pendiente.</b> Su fila se completará cuando termine "
+                  "el entrenamiento.</li>" for m in pending) + unet_limit + "</ul>",
         "<h2>Método y reproducibilidad</h2><ul>"
         "<li>Datos: BBBC039v1 (CC0), splits oficiales train/val/test (100/50/50). "
         "Máscaras de referencia sin filtrar.</li>"
         "<li>Otsu + watershed (scikit-image): umbral de Otsu, transformada de distancia y "
         "watershed; parámetros elegidos por búsqueda en rejilla en train.</li>"
         "<li>StarDist <code>2D_versatile_fluo</code> (BSD-3), umbrales por defecto del modelo, "
-        "normalización por percentiles 1–99,8.</li>"
+        "normalización por percentiles 1–99,8.</li>" + unet_method +
         "<li>Código: scripts con semilla fija; cada cifra de este informe se regenera con "
         "<code>evaluate.py</code>, <code>robustness_blur.py</code>, <code>quantify.py</code> y "
         "<code>report.py</code>.</li></ul>",

@@ -27,7 +27,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from bioseg.evaluation import (METRICS, VARIANTS, evaluate_dir, format_summary,
+from bioseg.evaluation import (COUNTS, METRICS, VARIANTS, evaluate_dir, format_summary,
                                object_tables_dir, slug)
 
 DEFAULT_METHODS = {  # name -> folder template ({split} is filled in)
@@ -80,7 +80,7 @@ def main() -> None:
                   "n_images": len(per_image), "pred_dir": folder.as_posix(), **summary[v]}
                  for v in VARIANTS]
     rows_ok = [r for r in rows if r["status"] == "ok"]
-    cols = ["method", "variant", "status", *METRICS, "split", "n_images", "pred_dir"]
+    cols = ["method", "variant", "status", *METRICS, *COUNTS, "split", "n_images", "pred_dir"]
     pd.DataFrame(rows).reindex(columns=cols).to_csv(args.out / "results.csv", index=False)
     print("Tabla:", args.out / "results.csv")
 

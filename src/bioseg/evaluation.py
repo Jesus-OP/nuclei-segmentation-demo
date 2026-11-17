@@ -25,6 +25,7 @@ THRESHOLDS = tuple(np.round(np.arange(0.5, 1.0, 0.05), 2).tolist())
 MIN_AREA_EVAL = 25
 VARIANTS = ("all", "ge25")
 METRICS = ("AP@0.5", "AP@0.5:0.95", "F1@0.5", "F1@0.5:0.95", "IoU_matched@0.5")
+COUNTS = ("TP@0.5", "FP@0.5", "FN@0.5")   # pooled raw counts behind AP@0.5 / F1@0.5
 
 
 def drop_small(labels: np.ndarray, min_area: int) -> np.ndarray:
@@ -60,11 +61,13 @@ def summarize(counts: list[dict]) -> dict:
             denom = tp + fp + fn
             ap.append(tp / denom if denom else 1.0)
             f1.append(2 * tp / (2 * tp + fp + fn) if denom else 1.0)
-        tp50 = sum(c[(variant, THRESHOLDS[0])][0] for c in counts)
+        tp50, fp50, fn50 = (int(x) for x in
+                            np.sum([c[(variant, THRESHOLDS[0])] for c in counts], axis=0))
         iou_sum = sum(c.get((variant, "iou_sum"), 0.0) for c in counts)
         res[variant] = {"AP@0.5": float(ap[0]), "AP@0.5:0.95": float(np.mean(ap)),
                         "F1@0.5": float(f1[0]), "F1@0.5:0.95": float(np.mean(f1)),
-                        "IoU_matched@0.5": float(iou_sum / tp50) if tp50 else float("nan")}
+                        "IoU_matched@0.5": float(iou_sum / tp50) if tp50 else float("nan"),
+                        "TP@0.5": tp50, "FP@0.5": fp50, "FN@0.5": fn50}
     return res
 
 
