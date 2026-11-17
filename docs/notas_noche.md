@@ -96,7 +96,11 @@ Desenfoque simulado (test, `runs/robustness_blur.csv`), AP@0.5:0.95 con todos lo
 
 ## Qué debes revisar tú
 1. **Abrir `runs/report.html`** y leer el resumen con ojos de cliente (tono, claims).
-2. **Solapamiento DSB 2018 / BBBC039.** Ambos salen en parte de colecciones del Broad. Si
+2. ~~**Solapamiento DSB 2018 / BBBC039.**~~ **Resuelto (2026-11-17):** 9 imágenes de test
+   están en DSB stage1_train (NCC ≥ 0,998; ningún otro par pasa de 0,79). Sin ellas StarDist
+   da AP@0.5:0.95 = 0,754, igual que con las 50; en esas 9 da 0,758 (Otsu también sube en
+   ellas: son algo más fáciles). Tabla en `runs/results_excl_dsb.csv`, informe y README.
+   Texto original: Ambos salen en parte de colecciones del Broad. Si
    alguna imagen de test de BBBC039 estuvo en el entrenamiento de StarDist, su resultado es
    optimista. No lo he podido comprobar (habría que cruzar `metadata.xlsx` de BBBC038 con
    los nombres de BBBC039). Está como limitación en el informe y en LICENSES.md.
@@ -112,7 +116,8 @@ Desenfoque simulado (test, `runs/robustness_blur.csv`), AP@0.5:0.95 con todos lo
 6. **`CLAUDE.md` está en el repo público** (se subió en el primer commit, como el resto
    salvo `negocio/`). Describe tu perfil y el plan de servicio; si no quieres que sea
    público, sácalo con `git rm --cached CLAUDE.md` y añádelo a `.gitignore`.
-7. **README (paso 8)** no está hecho: la tabla del README sigue con guiones.
+7. ~~README (paso 8)~~ hecho el 2026-11-17 (inglés, figura en `docs/figures/`).
+   `CLAUDE.md` ya no se versiona (sigue en el historial de git de commits anteriores).
 8. Comparación con Caicedo et al.: ver `docs/notes_evaluate.md`. Ellos reportan F1 medio en
    0.50:0.95 contra la referencia completa; lo comparable es nuestra variante "todos"
    (StarDist 0.833, Otsu 0.798). No he buscado su cifra exacta del artículo.
