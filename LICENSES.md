@@ -27,6 +27,8 @@ el gist de ejemplo de los autores, que no declara licencia).
   Benchmark Collection [Caicedo et al., Nature Methods, 2019]."
 
 Conclusion (2026-11-17): StarDist 2D_versatile_fluo es compatible con uso comercial
-(codigo y pesos BSD-3, datos CC0). Riesgo pendiente de revisar (no de licencia): DSB 2018 y
-BBBC039 proceden en parte de la misma fuente (Broad); si alguna imagen de test de BBBC039
-estuviera en el entrenamiento de StarDist, su resultado en test seria optimista.
+(codigo y pesos BSD-3, datos CC0). Riesgo (no de licencia) comprobado el 2026-11-17 con
+`scripts/check_dsb_overlap.py`: 9 de las 50 imagenes de test de BBBC039 estan en DSB 2018
+stage1_train (25 de train, 9 de val). Sin ellas, StarDist AP@0.5:0.95 = 0.754 (igual que con
+las 50); ver README. stage1_train.zip (BBBC038, CC0) se descarga solo para esta comprobacion
+y no se redistribuye.

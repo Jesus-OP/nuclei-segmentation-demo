@@ -65,3 +65,19 @@ def test_evaluate_dir(tmp_path):
     summary, per_image = evaluate_dir(data, pred, "test", workers=1)
     assert summary["all"]["AP@0.5:0.95"] == 1.0
     assert len(per_image) == 1
+
+
+def test_evaluate_dir_exclude(tmp_path):
+    data, pred = tmp_path / "data", tmp_path / "pred"
+    (data / "labels").mkdir(parents=True)
+    pred.mkdir()
+    pd.DataFrame({"stem": ["a", "b"], "split": ["test", "test"]}).to_csv(
+        data / "splits.csv", index=False)
+    for s in "ab":
+        tifffile.imwrite(data / "labels" / f"{s}.tif", _scene())
+    tifffile.imwrite(pred / "a.tif", _scene())
+    tifffile.imwrite(pred / "b.tif", np.zeros((20, 20), np.uint16))  # all missed
+    full, _ = evaluate_dir(data, pred, "test", workers=1)
+    kept, per_image = evaluate_dir(data, pred, "test", workers=1, exclude={"b"})
+    assert full["all"]["AP@0.5"] == 0.5
+    assert kept["all"]["AP@0.5"] == 1.0 and list(per_image["stem"]) == ["a"]

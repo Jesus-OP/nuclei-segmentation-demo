@@ -109,14 +109,16 @@ def _counts_from_files(args):
     return image_counts(tifffile.imread(gt_path), tifffile.imread(pred_path))
 
 
-def evaluate_dir(data: Path, pred_dir: Path, split: str, workers: int = 4):
+def evaluate_dir(data: Path, pred_dir: Path, split: str, workers: int = 4,
+                 exclude: set[str] | None = None):
     """Evaluate every `<stem>.tif` label image in pred_dir against the reference.
 
     Returns (summary, per_image DataFrame). Raises if a prediction is missing, so a
-    partial folder can never be reported as a full-split result.
+    partial folder can never be reported as a full-split result. `exclude`: stems left
+    out on purpose (e.g. images seen by a pretrained model during its training).
     """
     data, pred_dir = Path(data), Path(pred_dir)
-    stems = stems_of(data, split)
+    stems = [s for s in stems_of(data, split) if s not in (exclude or set())]
     missing = [s for s in stems if not (pred_dir / f"{s}.tif").exists()]
     if missing:
         raise FileNotFoundError(f"{len(missing)} predicciones faltan en {pred_dir}, "

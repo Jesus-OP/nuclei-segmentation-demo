@@ -12,6 +12,9 @@ Outputs (in --out, default runs/):
     eval/<slug>_per_image.csv      per-image metrics (for picking examples)
     eval/<slug>_objects.csv        per reference object: area, touching, at_border, IoU,
                                    found at IoU >= 0.5 (for the failure-case analysis)
+    results_excl_dsb.csv           same metrics without the test images that are also in
+                                   DSB 2018 stage1_train (only if runs/dsb_overlap.csv
+                                   exists, see check_dsb_overlap.py)
 Metric definitions: src/bioseg/evaluation.py and docs/notes_evaluate.md.
 """
 import os
@@ -54,6 +57,9 @@ def main() -> None:
                     help="repeatable; default: the three project methods")
     ap.add_argument("--out", type=Path, default=Path("runs"))
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--overlap", type=Path, default=Path("runs/dsb_overlap.csv"),
+                    help="from check_dsb_overlap.py; if present, also writes "
+                         "results_excl_dsb.csv without the overlapping images")
     args = ap.parse_args()
 
     (args.out / "eval").mkdir(parents=True, exist_ok=True)
@@ -73,9 +79,25 @@ def main() -> None:
         rows += [{"method": name, "variant": v, "status": "ok", "split": args.split,
                   "n_images": len(per_image), "pred_dir": folder.as_posix(), **summary[v]}
                  for v in VARIANTS]
+    rows_ok = [r for r in rows if r["status"] == "ok"]
     cols = ["method", "variant", "status", *METRICS, "split", "n_images", "pred_dir"]
     pd.DataFrame(rows).reindex(columns=cols).to_csv(args.out / "results.csv", index=False)
     print("Tabla:", args.out / "results.csv")
+
+    if args.overlap.is_file():  # same table without the images found in DSB 2018 train
+        ov = pd.read_csv(args.overlap)
+        seen = set(ov.loc[ov["in_dsb"] & (ov["split"] == args.split), "stem"])
+        rows = []
+        for r in [r for r in rows_ok if r["variant"] == VARIANTS[0]]:
+            summary, per_image = evaluate_dir(args.data, Path(r["pred_dir"]), args.split,
+                                              args.workers, exclude=seen)
+            rows += [{"method": r["method"], "variant": v, "status": "ok",
+                      "split": args.split, "n_images": len(per_image),
+                      "n_excluded": len(seen), "pred_dir": r["pred_dir"], **summary[v]}
+                     for v in VARIANTS]
+        out = args.out / "results_excl_dsb.csv"
+        pd.DataFrame(rows).reindex(columns=[*cols, "n_excluded"]).to_csv(out, index=False)
+        print(f"Sin las {len(seen)} imágenes que están en DSB 2018 stage1_train:", out)
 
 
 if __name__ == "__main__":

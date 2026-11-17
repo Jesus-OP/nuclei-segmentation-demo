@@ -3,6 +3,7 @@
 Reads only files produced by the other scripts (no model is run here):
     runs/results.csv, runs/eval/*_per_image.csv, runs/eval/*_objects.csv   (evaluate.py)
     runs/robustness_blur.csv                                             (robustness_blur.py)
+    runs/results_excl_dsb.csv  (optional; check_dsb_overlap.py, then evaluate.py)
     runs/quant/<method>/summary.csv, runs/quant/reference/summary.csv     (quantify.py)
 Figures are embedded as base64 PNG, so the HTML is a single file that can be e-mailed.
 """
@@ -334,6 +335,46 @@ def metrics_table(results: pd.DataFrame, variant: str) -> str:
     return f'<div class="tablewrap">{html_t}</div>'
 
 
+def overlap_section(runs: Path, results: pd.DataFrame, n_test: int) -> tuple[str, str]:
+    """Metrics without the test images that are also in DSB 2018 stage1_train.
+
+    Returns (html for the metrics section, <li> for the limitations). Without
+    runs/results_excl_dsb.csv (check_dsb_overlap.py + evaluate.py) only the caveat remains.
+    """
+    path = runs / "results_excl_dsb.csv"
+    if not path.exists():
+        return "", ("<li><b>Posible solapamiento de datos.</b> StarDist se entrenó con parte de "
+                    "DSB 2018, que procede en parte de las mismas colecciones del Broad Institute; "
+                    "si alguna imagen de test estuviera en su entrenamiento, su resultado sería "
+                    "algo optimista.</li>")
+    excl = pd.read_csv(path)
+    n_ex = int(excl["n_excluded"].iloc[0])
+    cols = ["AP@0.5", "AP@0.5:0.95", "F1@0.5"]
+    full = results[(results["variant"] == "all") & (results["status"] == "ok")].set_index("method")
+    sub = excl[excl["variant"] == "all"].set_index("method")
+    rows = [{"Método": short(m), "Imágenes": label, **{c: src.loc[m, c] for c in cols}}
+            for m in sub.index
+            for label, src in [(f"las {n_test}", full), (f"{n_test - n_ex} (sin las {n_ex})", sub)]]
+    table = table_html(pd.DataFrame(rows), {c: (lambda v: es(v, 3)) for c in cols})
+    sd = next((m for m in sub.index if "StarDist" in m), None)
+    delta = "" if sd is None else (
+        f" Para StarDist, AP@0.5:0.95 es {es(full.loc[sd, 'AP@0.5:0.95'], 3)} con todas las "
+        f"imágenes y {es(sub.loc[sd, 'AP@0.5:0.95'], 3)} sin ellas.")
+    html_s = ("<h3>Imágenes de test que StarDist pudo ver al entrenarse</h3>"
+              "<p>StarDist <code>2D_versatile_fluo</code> se entrenó con parte del conjunto "
+              "DSB 2018 (stage1_train), que incluye campos de BBBC039. Comparando píxel a píxel "
+              f"(correlación normalizada) hemos encontrado <b>{n_ex} de las {n_test} imágenes de "
+              "test</b> en DSB 2018 stage1_train. No sabemos cuáles de ellas entraron en el "
+              "subconjunto concreto de StarDist, así que las tratamos todas como vistas y repetimos "
+              f"la evaluación sin ellas (todos los objetos).{delta}</p>"
+              f'<div class="tablewrap">{table}</div>')
+    li = (f"<li><b>Solapamiento de datos (comprobado).</b> {n_ex} imágenes de test están en DSB "
+          "2018, de donde salen los datos de entrenamiento de StarDist. Sin ellas las métricas "
+          "apenas cambian (ver «Métricas»), pero una validación sobre datos del cliente, que "
+          "StarDist no ha visto, sigue siendo la prueba definitiva.</li>")
+    return html_s, li
+
+
 def build(args) -> str:
     results = pd.read_csv(args.runs / "results.csv")
     ok = results[(results["status"] == "ok") & (results["variant"] == "all")]
@@ -373,6 +414,7 @@ def build(args) -> str:
                 else "se subestima")
     border_share = float(objects[best["method"]]["at_border"].mean())
     rb = rec.set_index("Grupo de núcleos")[short(best["method"])]
+    overlap_html, overlap_li = overlap_section(args.runs, results, n_test)
 
     kpis = f"""<div class="kpis">
 <div class="kpi"><b>{es(best['AP@0.5'], 2)}</b><span>AP@0.5 del mejor método ({short(best['method'])})</span></div>
@@ -419,7 +461,7 @@ a {pct(rb['Aislados'])} de los aislados), <b>núcleos fragmentados</b> y <b>obje
         "núcleos no detectados), contando como acierto un solapamiento (IoU) ≥ 0,5. "
         "<i>AP@0.5:0.95</i> promedia exigencias de solapamiento de 0,5 a 0,95, así que premia "
         "contornos precisos. <i>IoU medio (aciertos)</i> mide lo bien que se ajusta el contorno "
-        "de los núcleos que sí se detectan.</p>",
+        "de los núcleos que sí se detectan.</p>" + overlap_html,
         "<h2>Ejemplos</h2>" + figure_html(
             fig_examples(args.data, pred_dirs, per_image[best["method"]]),
             f"Seis imágenes de test repartidas desde la mejor a la peor según "
@@ -465,9 +507,7 @@ a {pct(rb['Aislados'])} de los aislados), <b>núcleos fragmentados</b> y <b>obje
         "<li><b>Objetos diminutos.</b> Los objetos &lt; 25 px son micronúcleos o restos anotados a "
         "propósito; ningún método los detecta bien. Si son relevantes para el estudio, hace "
         "falta un modelo específico.</li>"
-        "<li><b>Posible solapamiento de datos.</b> StarDist se entrenó con parte de DSB 2018, "
-        "que procede en parte de las mismas colecciones del Broad Institute; si alguna imagen "
-        "de test estuviera en su entrenamiento, su resultado sería algo optimista.</li>"
+        + overlap_li +
         "<li><b>Desenfoque solo simulado.</b> El desenfoque gaussiano es una aproximación; el "
         "desenfoque óptico real y la saturación pueden comportarse distinto.</li>"
         "<li><b>Sin tamaño de píxel.</b> La página del dataset no lo indica: las áreas van en "
