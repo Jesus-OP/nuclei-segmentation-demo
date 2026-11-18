@@ -1,0 +1,666 @@
+stem,organ,species,split,train_rank,n_nuclei,n_fragmented,vague_frac
+human_bladder_01,human bladder,human,test,,24,0,0.0839
+human_bladder_02,human bladder,human,test,,3,0,0.0001
+human_bladder_03,human bladder,human,test,,25,0,0.0688
+human_bladder_04,human bladder,human,test,,128,1,0.116
+human_bladder_05,human bladder,human,test,,29,0,0.0151
+human_bladder_06,human bladder,human,test,,18,0,0.0423
+human_bladder_07,human bladder,human,test,,40,1,0.0562
+human_bladder_08,human bladder,human,test,,27,0,0.0328
+human_bladder_09,human bladder,human,test,,31,1,0.0484
+human_bladder_10,human bladder,human,test,,24,0,0.0004
+human_bladder_11,human bladder,human,test,,33,1,0.0001
+human_bladder_12,human bladder,human,test,,18,0,0.0187
+human_brain_1,human brain,human,test,,5,0,0.0067
+human_brain_10,human brain,human,test,,17,0,0.0634
+human_brain_11,human brain,human,test,,5,0,0.0003
+human_brain_12,human brain,human,test,,5,0,0.067
+human_brain_2,human brain,human,test,,2,0,0.0305
+human_brain_3,human brain,human,test,,15,0,0.0312
+human_brain_4,human brain,human,test,,9,0,0.1655
+human_brain_5,human brain,human,test,,6,0,0.0751
+human_brain_6,human brain,human,test,,16,0,0.0533
+human_brain_7,human brain,human,test,,21,0,0.0431
+human_brain_8,human brain,human,test,,37,0,0.0184
+human_brain_9,human brain,human,test,,8,0,0.0271
+human_cardia_1,human cardia,human,train,104,29,0,0.0839
+human_cardia_10,human cardia,human,train,304,134,2,0.1088
+human_cardia_11,human cardia,human,train,9,16,0,0.0003
+human_cardia_12,human cardia,human,train,358,61,1,0.0578
+human_cardia_2,human cardia,human,train,242,67,0,0.0984
+human_cardia_3,human cardia,human,train,51,120,1,0.0581
+human_cardia_4,human cardia,human,train,198,15,0,0.0419
+human_cardia_5,human cardia,human,train,415,91,0,0.0961
+human_cardia_6,human cardia,human,train,178,45,0,0.0935
+human_cardia_7,human cardia,human,train,237,19,0,0.1017
+human_cardia_8,human cardia,human,train,115,19,0,0.1004
+human_cardia_9,human cardia,human,train,316,55,0,0.112
+human_cerebellum_1,human cerebellum,human,train,169,43,0,0.0286
+human_cerebellum_10,human cerebellum,human,train,212,6,0,0.03
+human_cerebellum_11,human cerebellum,human,train,272,90,0,0.0881
+human_cerebellum_12,human cerebellum,human,train,253,5,0,0.0311
+human_cerebellum_2,human cerebellum,human,train,297,136,0,0.0935
+human_cerebellum_3,human cerebellum,human,train,152,10,0,0.0589
+human_cerebellum_4,human cerebellum,human,train,26,7,0,0.0413
+human_cerebellum_5,human cerebellum,human,train,41,159,0,0.1384
+human_cerebellum_6,human cerebellum,human,train,327,69,1,0.0989
+human_cerebellum_7,human cerebellum,human,train,378,5,0,0.0366
+human_cerebellum_8,human cerebellum,human,train,342,12,0,0.0626
+human_cerebellum_9,human cerebellum,human,train,273,7,0,0.0336
+human_epiglottis_1,human epiglottis,human,train,375,5,0,0.0008
+human_epiglottis_10,human epiglottis,human,train,177,45,0,0.1728
+human_epiglottis_11,human epiglottis,human,train,170,5,0,0.0851
+human_epiglottis_12,human epiglottis,human,train,15,23,0,0.0921
+human_epiglottis_2,human epiglottis,human,train,233,8,0,0.039
+human_epiglottis_3,human epiglottis,human,train,424,29,0,0.0797
+human_epiglottis_4,human epiglottis,human,train,303,12,0,0.0525
+human_epiglottis_5,human epiglottis,human,train,103,2,0,0.0003
+human_epiglottis_6,human epiglottis,human,train,229,48,0,0.0749
+human_epiglottis_7,human epiglottis,human,train,146,14,0,0.0985
+human_epiglottis_8,human epiglottis,human,train,333,37,0,0.0663
+human_jejunum_01,human jejunum,human,val,,70,0,0.0692
+human_jejunum_02,human jejunum,human,val,,88,0,0.1135
+human_jejunum_03,human jejunum,human,val,,107,0,0.1924
+human_jejunum_04,human jejunum,human,val,,44,0,0.0587
+human_jejunum_05,human jejunum,human,val,,53,0,0.0565
+human_jejunum_06,human jejunum,human,val,,83,0,0.076
+human_jejunum_07,human jejunum,human,val,,94,0,0.1347
+human_jejunum_08,human jejunum,human,val,,90,0,0.1238
+human_jejunum_09,human jejunum,human,val,,117,0,0.1129
+human_jejunum_10,human jejunum,human,val,,128,0,0.154
+human_kidney_01,human kidney,human,train,269,100,0,0.0835
+human_kidney_02,human kidney,human,train,54,84,0,0.0691
+human_kidney_03,human kidney,human,train,232,82,0,0.0725
+human_kidney_04,human kidney,human,train,45,86,0,0.0742
+human_kidney_05,human kidney,human,train,49,138,0,0.0909
+human_kidney_06,human kidney,human,train,338,110,0,0.1028
+human_kidney_07,human kidney,human,train,62,112,1,0.1266
+human_kidney_08,human kidney,human,train,164,144,0,0.0989
+human_kidney_09,human kidney,human,train,194,155,0,0.1825
+human_kidney_10,human kidney,human,train,77,121,0,0.2293
+human_kidney_11,human kidney,human,train,135,90,1,0.1251
+human_liver_01,human liver,human,test,,41,0,0.0003
+human_liver_02,human liver,human,test,,46,1,0.0004
+human_liver_03,human liver,human,test,,36,0,0.0002
+human_liver_04,human liver,human,test,,38,0,0.0002
+human_liver_05,human liver,human,test,,40,1,0.0003
+human_liver_06,human liver,human,test,,38,0,0.0496
+human_liver_07,human liver,human,test,,31,0,0.0379
+human_liver_08,human liver,human,test,,34,0,0.042
+human_liver_09,human liver,human,test,,29,0,0.0346
+human_liver_10,human liver,human,test,,23,0,0.0573
+human_liver_11,human liver,human,test,,34,0,0.0335
+human_liver_12,human liver,human,test,,24,0,0.1824
+human_liver_13,human liver,human,test,,35,0,0.0801
+human_liver_14,human liver,human,test,,37,1,0.0886
+human_liver_15,human liver,human,test,,61,0,0.1542
+human_liver_16,human liver,human,test,,38,0,0.0945
+human_liver_17,human liver,human,test,,29,0,0.0302
+human_liver_18,human liver,human,test,,28,1,0.0804
+human_liver_19,human liver,human,test,,32,0,0.0815
+human_liver_20,human liver,human,test,,34,0,0.0665
+human_liver_21,human liver,human,test,,38,1,0.0585
+human_liver_22,human liver,human,test,,36,1,0.0002
+human_liver_23,human liver,human,test,,36,0,0.0374
+human_liver_24,human liver,human,test,,33,1,0.0477
+human_liver_25,human liver,human,test,,27,0,0.0105
+human_liver_26,human liver,human,test,,38,1,0.0851
+human_liver_27,human liver,human,test,,36,1,0.0732
+human_liver_28,human liver,human,test,,25,0,0.0522
+human_liver_29,human liver,human,test,,14,0,0.0939
+human_liver_30,human liver,human,test,,28,1,0.0874
+human_liver_31,human liver,human,test,,28,0,0.085
+human_liver_32,human liver,human,test,,31,0,0.1099
+human_liver_33,human liver,human,test,,36,0,0.1564
+human_liver_34,human liver,human,test,,34,0,0.0901
+human_liver_35,human liver,human,test,,37,0,0.0914
+human_liver_36,human liver,human,test,,33,0,0.0705
+human_liver_37,human liver,human,test,,33,0,0.062
+human_liver_38,human liver,human,test,,65,2,0.1557
+human_liver_39,human liver,human,test,,26,0,0.1193
+human_liver_40,human liver,human,test,,28,0,0.1427
+human_lung_1,human lung,human,train,246,35,0,0.0714
+human_lung_10,human lung,human,train,137,2,0,0.0003
+human_lung_11,human lung,human,train,245,39,0,0.0988
+human_lung_12,human lung,human,train,390,35,3,0.072
+human_lung_2,human lung,human,train,265,13,0,0.0002
+human_lung_3,human lung,human,train,322,47,0,0.1385
+human_lung_4,human lung,human,train,243,25,0,0.0367
+human_lung_6,human lung,human,train,175,41,0,0.0862
+human_lung_7,human lung,human,train,28,40,0,0.0599
+human_lung_8,human lung,human,train,74,18,1,0.0352
+human_lung_9,human lung,human,train,401,23,0,0.0437
+human_melanoma_01,human melanoma,human,test,,64,0,0.0238
+human_melanoma_02,human melanoma,human,test,,33,1,0.2943
+human_melanoma_03,human melanoma,human,test,,63,0,0.0927
+human_melanoma_04,human melanoma,human,test,,45,0,0.3022
+human_melanoma_05,human melanoma,human,test,,57,0,0.0388
+human_melanoma_06,human melanoma,human,test,,42,0,0.2275
+human_melanoma_07,human melanoma,human,test,,41,1,0.208
+human_melanoma_08,human melanoma,human,test,,64,0,0.0912
+human_melanoma_09,human melanoma,human,test,,30,0,0.1662
+human_melanoma_10,human melanoma,human,test,,43,0,0.1213
+human_melanoma_11,human melanoma,human,test,,18,0,0.1613
+human_melanoma_12,human melanoma,human,test,,33,0,0.2273
+human_muscle_1,human muscle,human,train,336,32,0,0.1038
+human_muscle_10,human muscle,human,train,391,6,0,0.0478
+human_muscle_2,human muscle,human,train,377,9,0,0.1124
+human_muscle_3,human muscle,human,train,252,8,0,0.0003
+human_muscle_5,human muscle,human,train,203,12,0,0.0582
+human_muscle_6,human muscle,human,train,381,8,0,0.0001
+human_muscle_7,human muscle,human,train,96,37,0,0.0719
+human_muscle_8,human muscle,human,train,172,11,0,0.07
+human_muscle_9,human muscle,human,train,190,4,0,0.0435
+human_oesophagus_01,human oesophagus,human,train,363,19,0,0.0002
+human_oesophagus_02,human oesophagus,human,train,260,59,0,0.0297
+human_oesophagus_03,human oesophagus,human,train,181,22,0,0.0614
+human_oesophagus_04,human oesophagus,human,train,417,46,0,0.0287
+human_oesophagus_05,human oesophagus,human,train,122,34,0,0.0451
+human_oesophagus_06,human oesophagus,human,train,52,21,0,0.0002
+human_oesophagus_07,human oesophagus,human,train,226,73,0,0.0805
+human_oesophagus_08,human oesophagus,human,train,405,37,1,0.0559
+human_oesophagus_09,human oesophagus,human,train,184,25,0,0.0437
+human_oesophagus_10,human oesophagus,human,train,113,18,0,0.0281
+human_oesophagus_11,human oesophagus,human,train,365,56,1,0.0559
+human_oesophagus_12,human oesophagus,human,train,100,14,0,0.0002
+human_oesophagus_13,human oesophagus,human,train,421,41,2,0.0168
+human_oesophagus_14,human oesophagus,human,train,352,18,0,0.0233
+human_oesophagus_15,human oesophagus,human,train,281,73,0,0.1298
+human_oesophagus_16,human oesophagus,human,train,351,13,1,0.0001
+human_oesophagus_17,human oesophagus,human,train,264,46,0,0.0245
+human_oesophagus_18,human oesophagus,human,train,11,43,1,0.0478
+human_oesophagus_20,human oesophagus,human,train,35,88,0,0.116
+human_oesophagus_21,human oesophagus,human,train,21,54,0,0.0396
+human_oesophagus_22,human oesophagus,human,train,383,45,0,0.032
+human_oesophagus_23,human oesophagus,human,train,290,45,1,0.0441
+human_oesophagus_24,human oesophagus,human,train,34,24,0,0.0515
+human_oesophagus_25,human oesophagus,human,train,23,9,0,0.0004
+human_oesophagus_26,human oesophagus,human,train,29,78,0,0.0401
+human_oesophagus_27,human oesophagus,human,train,248,11,0,0.0003
+human_oesophagus_28,human oesophagus,human,train,117,64,0,0.0566
+human_oesophagus_29,human oesophagus,human,train,65,50,0,0.0515
+human_oesophagus_30,human oesophagus,human,train,200,35,0,0.058
+human_oesophagus_31,human oesophagus,human,train,428,71,4,0.0414
+human_oesophagus_32,human oesophagus,human,train,286,37,0,0.0002
+human_oesophagus_33,human oesophagus,human,train,213,44,2,0.0555
+human_oesophagus_34,human oesophagus,human,train,61,81,0,0.0363
+human_oesophagus_35,human oesophagus,human,train,241,56,0,0.0555
+human_oesophagus_36,human oesophagus,human,train,285,12,0,0.0002
+human_oesophagus_37,human oesophagus,human,train,388,55,0,0.1172
+human_oesophagus_38,human oesophagus,human,train,262,32,0,0.0002
+human_oesophagus_39,human oesophagus,human,train,205,46,1,0.0002
+human_oesophagus_40,human oesophagus,human,train,411,17,0,0.0002
+human_oesophagus_41,human oesophagus,human,train,299,44,1,0.0169
+human_oesophagus_42,human oesophagus,human,train,161,116,2,0.0255
+human_oesophagus_43,human oesophagus,human,train,128,49,0,0.0391
+human_oesophagus_44,human oesophagus,human,train,347,39,0,0.021
+human_oesophagus_45,human oesophagus,human,train,24,33,1,0.0563
+human_oesophagus_46,human oesophagus,human,train,301,79,0,0.1222
+human_oesophagus_47,human oesophagus,human,train,109,57,0,0.0669
+human_oesophagus_48,human oesophagus,human,train,315,17,0,0.0003
+human_pancreas_01,human pancreas,human,train,302,62,0,0.0395
+human_pancreas_02,human pancreas,human,train,144,56,1,0.0687
+human_pancreas_03,human pancreas,human,train,408,43,0,0.068
+human_pancreas_04,human pancreas,human,train,154,28,5,0.0722
+human_pancreas_05,human pancreas,human,train,158,63,2,0.079
+human_pancreas_06,human pancreas,human,train,222,53,1,0.1114
+human_pancreas_07,human pancreas,human,train,124,53,0,0.0937
+human_pancreas_08,human pancreas,human,train,422,62,0,0.0798
+human_pancreas_09,human pancreas,human,train,179,67,1,0.0903
+human_pancreas_10,human pancreas,human,train,197,44,0,0.0406
+human_pancreas_11,human pancreas,human,train,145,58,2,0.0433
+human_pancreas_12,human pancreas,human,train,3,49,0,0.0924
+human_pancreas_13,human pancreas,human,train,385,54,2,0.0424
+human_pancreas_14,human pancreas,human,train,10,44,1,0.0801
+human_pancreas_15,human pancreas,human,train,419,28,1,0.0002
+human_pancreas_16,human pancreas,human,train,43,40,0,0.0462
+human_pancreas_17,human pancreas,human,train,306,55,1,0.0495
+human_pancreas_18,human pancreas,human,train,224,63,0,0.0268
+human_pancreas_19,human pancreas,human,train,296,49,0,0.1302
+human_pancreas_20,human pancreas,human,train,218,40,0,0.1155
+human_pancreas_21,human pancreas,human,train,88,54,0,0.0504
+human_pancreas_22,human pancreas,human,train,345,38,0,0.0932
+human_pancreas_23,human pancreas,human,train,324,45,0,0.036
+human_pancreas_24,human pancreas,human,train,1,62,0,0.0939
+human_pancreas_25,human pancreas,human,train,40,40,2,0.0487
+human_pancreas_26,human pancreas,human,train,266,29,2,0.0762
+human_pancreas_27,human pancreas,human,train,276,47,1,0.0522
+human_pancreas_28,human pancreas,human,train,191,57,1,0.0833
+human_pancreas_29,human pancreas,human,train,131,73,0,0.0109
+human_pancreas_30,human pancreas,human,train,60,65,2,0.0509
+human_pancreas_31,human pancreas,human,train,361,51,0,0.0649
+human_pancreas_32,human pancreas,human,train,147,50,2,0.0415
+human_pancreas_33,human pancreas,human,train,112,65,4,0.0787
+human_pancreas_34,human pancreas,human,train,370,60,1,0.0282
+human_pancreas_35,human pancreas,human,train,134,56,2,0.0584
+human_pancreas_36,human pancreas,human,train,19,31,0,0.035
+human_pancreas_37,human pancreas,human,train,235,28,1,0.0324
+human_pancreas_38,human pancreas,human,train,114,45,0,0.1358
+human_pancreas_39,human pancreas,human,train,254,56,1,0.047
+human_pancreas_40,human pancreas,human,train,270,45,0,0.0443
+human_pancreas_41,human pancreas,human,train,108,41,0,0.0253
+human_pancreas_42,human pancreas,human,train,337,38,0,0.0174
+human_pancreas_43,human pancreas,human,train,119,45,0,0.0542
+human_pancreas_44,human pancreas,human,train,369,46,0,0.0767
+human_peritoneum_1,human peritoneum,human,val,,35,0,0.0495
+human_peritoneum_10,human peritoneum,human,val,,14,0,0.0633
+human_peritoneum_11,human peritoneum,human,val,,49,1,0.168
+human_peritoneum_12,human peritoneum,human,val,,24,0,0.0836
+human_peritoneum_2,human peritoneum,human,val,,25,1,0.0947
+human_peritoneum_3,human peritoneum,human,val,,71,0,0.0776
+human_peritoneum_4,human peritoneum,human,val,,75,2,0.066
+human_peritoneum_5,human peritoneum,human,val,,40,0,0.0001
+human_peritoneum_6,human peritoneum,human,val,,40,0,0.067
+human_peritoneum_7,human peritoneum,human,val,,34,0,0.0865
+human_peritoneum_8,human peritoneum,human,val,,31,0,0.1736
+human_peritoneum_9,human peritoneum,human,val,,30,0,0.1246
+human_placenta_01,human placenta,human,train,171,58,0,0.0713
+human_placenta_02,human placenta,human,train,219,37,1,0.0487
+human_placenta_03,human placenta,human,train,102,29,0,0.0569
+human_placenta_04,human placenta,human,train,57,57,0,0.0733
+human_placenta_05,human placenta,human,train,118,49,1,0.0325
+human_placenta_06,human placenta,human,train,120,66,0,0.0979
+human_placenta_07,human placenta,human,train,364,30,0,0.0002
+human_placenta_08,human placenta,human,train,87,82,1,0.042
+human_placenta_09,human placenta,human,train,320,53,0,0.0004
+human_placenta_10,human placenta,human,train,30,44,0,0.0689
+human_placenta_11,human placenta,human,train,90,45,0,0.0419
+human_placenta_12,human placenta,human,train,249,70,2,0.1602
+human_placenta_13,human placenta,human,train,393,69,1,0.0001
+human_placenta_14,human placenta,human,train,282,60,2,0.0382
+human_placenta_15,human placenta,human,train,271,66,0,0.0477
+human_placenta_16,human placenta,human,train,308,32,0,0.0837
+human_placenta_17,human placenta,human,train,220,40,0,0.0448
+human_placenta_18,human placenta,human,train,261,34,0,0.0181
+human_placenta_19,human placenta,human,train,340,11,0,0.0
+human_placenta_20,human placenta,human,train,412,51,0,0.0743
+human_placenta_21,human placenta,human,train,313,39,1,0.0327
+human_placenta_22,human placenta,human,train,206,40,0,0.0589
+human_placenta_23,human placenta,human,train,268,50,0,0.0478
+human_placenta_24,human placenta,human,train,321,72,0,0.0787
+human_placenta_25,human placenta,human,train,107,88,2,0.032
+human_placenta_26,human placenta,human,train,199,44,0,0.0453
+human_placenta_27,human placenta,human,train,353,54,0,0.0471
+human_placenta_28,human placenta,human,train,426,52,0,0.0699
+human_placenta_29,human placenta,human,train,214,65,1,0.0413
+human_placenta_30,human placenta,human,train,166,47,0,0.0737
+human_placenta_31,human placenta,human,train,392,43,2,0.0002
+human_placenta_32,human placenta,human,train,380,72,1,0.098
+human_placenta_33,human placenta,human,train,188,44,0,0.0585
+human_placenta_34,human placenta,human,train,187,5,0,0.0001
+human_placenta_35,human placenta,human,train,410,68,1,0.024
+human_placenta_36,human placenta,human,train,300,68,0,0.0657
+human_placenta_37,human placenta,human,train,372,25,0,0.0001
+human_placenta_38,human placenta,human,train,305,38,0,0.0542
+human_placenta_39,human placenta,human,train,101,21,0,0.0002
+human_placenta_40,human placenta,human,train,75,48,0,0.0633
+human_pylorus_1,human pylorus,human,test,,34,1,0.0002
+human_pylorus_10,human pylorus,human,test,,60,0,0.0173
+human_pylorus_11,human pylorus,human,test,,69,0,0.0382
+human_pylorus_12,human pylorus,human,test,,29,0,0.0528
+human_pylorus_2,human pylorus,human,test,,27,0,0.0003
+human_pylorus_3,human pylorus,human,test,,32,1,0.0546
+human_pylorus_4,human pylorus,human,test,,36,0,0.0277
+human_pylorus_5,human pylorus,human,test,,29,0,0.0002
+human_pylorus_6,human pylorus,human,test,,28,0,0.0388
+human_pylorus_7,human pylorus,human,test,,35,1,0.0002
+human_pylorus_8,human pylorus,human,test,,26,1,0.0003
+human_pylorus_9,human pylorus,human,test,,36,0,0.0226
+human_rectum_1,human rectum,human,test,,49,3,0.0411
+human_rectum_10,human rectum,human,test,,12,0,0.0002
+human_rectum_11,human rectum,human,test,,19,0,0.0002
+human_rectum_12,human rectum,human,test,,21,0,0.0001
+human_rectum_2,human rectum,human,test,,14,0,0.0002
+human_rectum_3,human rectum,human,test,,38,0,0.0485
+human_rectum_4,human rectum,human,test,,37,0,0.0001
+human_rectum_5,human rectum,human,test,,43,1,0.0098
+human_rectum_6,human rectum,human,test,,17,0,0.0003
+human_rectum_7,human rectum,human,test,,23,0,0.0474
+human_rectum_8,human rectum,human,test,,45,0,0.0003
+human_rectum_9,human rectum,human,test,,31,1,0.0002
+human_salivory_01,human salivory gland,human,val,,74,0,0.0603
+human_salivory_02,human salivory gland,human,val,,50,0,0.0386
+human_salivory_03,human salivory gland,human,val,,82,1,0.0481
+human_salivory_04,human salivory gland,human,val,,50,0,0.0359
+human_salivory_05,human salivory gland,human,val,,50,0,0.0271
+human_salivory_06,human salivory gland,human,val,,48,1,0.0001
+human_salivory_07,human salivory gland,human,val,,90,1,0.0701
+human_salivory_08,human salivory gland,human,val,,79,1,0.0695
+human_salivory_09,human salivory gland,human,val,,47,0,0.3415
+human_salivory_10,human salivory gland,human,val,,61,0,0.0464
+human_salivory_11,human salivory gland,human,val,,67,0,0.0595
+human_salivory_12,human salivory gland,human,val,,88,0,0.079
+human_salivory_13,human salivory gland,human,val,,63,0,0.0156
+human_salivory_14,human salivory gland,human,val,,88,1,0.0562
+human_salivory_15,human salivory gland,human,val,,43,1,0.0274
+human_salivory_16,human salivory gland,human,val,,43,1,0.1163
+human_salivory_17,human salivory gland,human,val,,95,2,0.0481
+human_salivory_18,human salivory gland,human,val,,72,0,0.0359
+human_salivory_19,human salivory gland,human,val,,79,0,0.0817
+human_salivory_20,human salivory gland,human,val,,68,0,0.1039
+human_salivory_21,human salivory gland,human,val,,72,0,0.0439
+human_salivory_22,human salivory gland,human,val,,63,0,0.0686
+human_salivory_23,human salivory gland,human,val,,80,0,0.0959
+human_salivory_24,human salivory gland,human,val,,58,0,0.0395
+human_salivory_25,human salivory gland,human,val,,73,0,0.0563
+human_salivory_26,human salivory gland,human,val,,16,0,0.0001
+human_salivory_27,human salivory gland,human,val,,66,0,0.0714
+human_salivory_28,human salivory gland,human,val,,62,0,0.0306
+human_salivory_29,human salivory gland,human,val,,82,0,0.0792
+human_salivory_30,human salivory gland,human,val,,78,1,0.0373
+human_salivory_31,human salivory gland,human,val,,117,1,0.1102
+human_salivory_32,human salivory gland,human,val,,79,1,0.0323
+human_salivory_33,human salivory gland,human,val,,89,0,0.0488
+human_salivory_34,human salivory gland,human,val,,84,1,0.0296
+human_salivory_35,human salivory gland,human,val,,65,0,0.0685
+human_salivory_36,human salivory gland,human,val,,78,0,0.0648
+human_salivory_37,human salivory gland,human,val,,82,0,0.027
+human_salivory_38,human salivory gland,human,val,,64,0,0.056
+human_salivory_39,human salivory gland,human,val,,76,1,0.0672
+human_salivory_40,human salivory gland,human,val,,80,0,0.0542
+human_salivory_41,human salivory gland,human,val,,95,0,0.0345
+human_salivory_42,human salivory gland,human,val,,75,0,0.0003
+human_salivory_43,human salivory gland,human,val,,69,0,0.0839
+human_salivory_44,human salivory gland,human,val,,89,0,0.0534
+human_spleen_01,human spleen,human,train,257,44,0,0.0003
+human_spleen_02,human spleen,human,train,73,32,0,0.0003
+human_spleen_03,human spleen,human,train,48,43,0,0.0003
+human_spleen_04,human spleen,human,train,36,9,0,0.0004
+human_spleen_05,human spleen,human,train,80,42,0,0.0426
+human_spleen_06,human spleen,human,train,173,53,0,0.0002
+human_spleen_07,human spleen,human,train,25,40,0,0.0002
+human_spleen_08,human spleen,human,train,50,44,0,0.0905
+human_spleen_09,human spleen,human,train,236,28,0,0.0003
+human_spleen_10,human spleen,human,train,56,32,2,0.0267
+human_spleen_11,human spleen,human,train,398,46,1,0.0314
+human_spleen_12,human spleen,human,train,82,32,1,0.0004
+human_spleen_13,human spleen,human,train,17,61,0,0.0003
+human_spleen_14,human spleen,human,train,58,69,0,0.0582
+human_spleen_15,human spleen,human,train,341,92,0,0.0673
+human_spleen_16,human spleen,human,train,116,128,0,0.0705
+human_spleen_17,human spleen,human,train,217,92,0,0.0455
+human_spleen_18,human spleen,human,train,91,72,0,0.0863
+human_spleen_19,human spleen,human,train,294,93,0,0.0867
+human_spleen_20,human spleen,human,train,160,41,0,0.1184
+human_spleen_21,human spleen,human,train,350,112,1,0.0484
+human_spleen_22,human spleen,human,train,292,70,1,0.0004
+human_spleen_23,human spleen,human,train,110,11,0,0.0003
+human_spleen_24,human spleen,human,train,2,45,2,0.029
+human_spleen_25,human spleen,human,train,5,190,0,0.0003
+human_spleen_26,human spleen,human,train,18,208,0,0.0002
+human_spleen_27,human spleen,human,train,216,179,0,0.0411
+human_spleen_28,human spleen,human,train,335,192,0,0.0233
+human_spleen_29,human spleen,human,train,165,211,1,0.0255
+human_spleen_30,human spleen,human,train,259,211,1,0.0243
+human_spleen_31,human spleen,human,train,225,174,0,0.0146
+human_spleen_32,human spleen,human,train,329,207,0,0.0004
+human_spleen_33,human spleen,human,train,76,180,0,0.0001
+human_spleen_34,human spleen,human,train,247,203,0,0.0002
+human_testis_1,human testis,human,train,318,34,1,0.078
+human_testis_10,human testis,human,train,204,32,0,0.0002
+human_testis_11,human testis,human,train,280,16,0,0.0001
+human_testis_12,human testis,human,train,196,23,0,0.0005
+human_testis_2,human testis,human,train,215,56,0,0.0405
+human_testis_3,human testis,human,train,234,36,0,0.1596
+human_testis_4,human testis,human,train,366,19,0,0.0005
+human_testis_5,human testis,human,train,330,74,0,0.0337
+human_testis_6,human testis,human,train,355,24,0,0.0003
+human_testis_7,human testis,human,train,389,11,0,0.0002
+human_testis_8,human testis,human,train,399,6,0,0.0002
+human_testis_9,human testis,human,train,240,49,1,0.0003
+human_tongue_01,human tongue,human,train,274,22,0,0.0145
+human_tongue_02,human tongue,human,train,186,15,0,0.0247
+human_tongue_03,human tongue,human,train,374,15,0,0.0003
+human_tongue_04,human tongue,human,train,99,50,0,0.0001
+human_tongue_05,human tongue,human,train,277,56,1,0.0199
+human_tongue_06,human tongue,human,train,174,21,0,0.0003
+human_tongue_07,human tongue,human,train,279,31,1,0.0002
+human_tongue_08,human tongue,human,train,143,33,0,0.0383
+human_tongue_09,human tongue,human,train,20,23,1,0.0311
+human_tongue_10,human tongue,human,train,94,67,1,0.0956
+human_tongue_11,human tongue,human,train,83,16,0,0.0329
+human_tongue_12,human tongue,human,train,68,26,0,0.0455
+human_tongue_13,human tongue,human,train,176,10,0,0.0005
+human_tongue_14,human tongue,human,train,227,17,0,0.0573
+human_tongue_15,human tongue,human,train,310,51,0,0.073
+human_tongue_16,human tongue,human,train,311,29,0,0.0395
+human_tongue_17,human tongue,human,train,228,90,1,0.0002
+human_tongue_18,human tongue,human,train,349,26,0,0.0004
+human_tongue_19,human tongue,human,train,69,57,1,0.0576
+human_tongue_20,human tongue,human,train,193,49,1,0.022
+human_tongue_21,human tongue,human,train,406,28,0,0.0302
+human_tongue_22,human tongue,human,train,22,9,0,0.0003
+human_tongue_23,human tongue,human,train,289,27,1,0.0354
+human_tongue_24,human tongue,human,train,138,33,1,0.0743
+human_tongue_25,human tongue,human,train,284,78,0,0.0598
+human_tongue_26,human tongue,human,train,397,17,0,0.0009
+human_tongue_27,human tongue,human,train,44,36,0,0.0006
+human_tongue_28,human tongue,human,train,404,80,1,0.0288
+human_tongue_29,human tongue,human,train,278,38,0,0.0763
+human_tongue_30,human tongue,human,train,125,39,0,0.0005
+human_tongue_31,human tongue,human,train,27,54,0,0.1158
+human_tongue_32,human tongue,human,train,66,18,0,0.0525
+human_tongue_33,human tongue,human,train,343,57,2,0.0704
+human_tongue_34,human tongue,human,train,332,26,0,0.0006
+human_tongue_35,human tongue,human,train,132,44,0,0.0342
+human_tongue_36,human tongue,human,train,32,19,0,0.0002
+human_tongue_37,human tongue,human,train,325,18,0,0.0005
+human_tongue_38,human tongue,human,train,373,37,0,0.0376
+human_tongue_39,human tongue,human,train,81,29,0,0.0005
+human_tongue_40,human tongue,human,train,386,24,0,0.0282
+human_tonsile_1,human tonsile,human,train,334,126,1,0.0319
+human_tonsile_10,human tonsile,human,train,64,32,0,0.0547
+human_tonsile_11,human tonsile,human,train,71,77,0,0.0666
+human_tonsile_12,human tonsile,human,train,16,121,2,0.046
+human_tonsile_2,human tonsile,human,train,409,115,0,0.084
+human_tonsile_3,human tonsile,human,train,400,87,0,0.0752
+human_tonsile_4,human tonsile,human,train,427,77,0,0.0626
+human_tonsile_5,human tonsile,human,train,78,76,0,0.0947
+human_tonsile_6,human tonsile,human,train,275,81,0,0.0665
+human_tonsile_7,human tonsile,human,train,163,82,0,0.0353
+human_tonsile_8,human tonsile,human,train,95,70,1,0.1024
+human_tonsile_9,human tonsile,human,train,328,101,1,0.0915
+human_umbilical_cord_01,human umbilical cord,human,train,14,4,0,0.036
+human_umbilical_cord_02,human umbilical cord,human,train,46,2,0,0.0169
+human_umbilical_cord_04,human umbilical cord,human,train,189,2,0,0.0453
+human_umbilical_cord_05,human umbilical cord,human,train,140,10,0,0.09
+human_umbilical_cord_06,human umbilical cord,human,train,142,7,0,0.0312
+human_umbilical_cord_07,human umbilical cord,human,train,129,23,1,0.1086
+human_umbilical_cord_08,human umbilical cord,human,train,382,10,0,0.0392
+human_umbilical_cord_09,human umbilical cord,human,train,402,8,0,0.0285
+human_umbilical_cord_10,human umbilical cord,human,train,201,11,0,0.0491
+human_umbilical_cord_11,human umbilical cord,human,train,319,18,0,0.0254
+human_umbilical_cord_12,human umbilical cord,human,train,293,11,0,0.0529
+mouse_subscapula_01,mouse fat (white and brown)_subscapula,mouse,train,133,1,0,0.0709
+mouse_subscapula_02,mouse fat (white and brown)_subscapula,mouse,train,387,1,0,0.0128
+mouse_subscapula_03,mouse fat (white and brown)_subscapula,mouse,train,98,9,0,0.0185
+mouse_subscapula_04,mouse fat (white and brown)_subscapula,mouse,train,93,2,0,0.0312
+mouse_subscapula_05,mouse fat (white and brown)_subscapula,mouse,train,223,4,1,0.0467
+mouse_subscapula_06,mouse fat (white and brown)_subscapula,mouse,train,331,7,0,0.0832
+mouse_subscapula_07,mouse fat (white and brown)_subscapula,mouse,train,105,22,1,0.0352
+mouse_subscapula_08,mouse fat (white and brown)_subscapula,mouse,train,42,14,1,0.0003
+mouse_subscapula_09,mouse fat (white and brown)_subscapula,mouse,train,403,23,1,0.0002
+mouse_subscapula_10,mouse fat (white and brown)_subscapula,mouse,train,423,19,0,0.04
+mouse_subscapula_11,mouse fat (white and brown)_subscapula,mouse,train,209,3,0,0.0002
+mouse_subscapula_12,mouse fat (white and brown)_subscapula,mouse,train,396,4,0,0.0206
+mouse_subscapula_13,mouse fat (white and brown)_subscapula,mouse,train,379,1,0,0.0006
+mouse_subscapula_14,mouse fat (white and brown)_subscapula,mouse,train,384,7,0,0.0002
+mouse_subscapula_15,mouse fat (white and brown)_subscapula,mouse,train,157,4,1,0.0002
+mouse_subscapula_16,mouse fat (white and brown)_subscapula,mouse,train,141,19,1,0.0359
+mouse_subscapula_17,mouse fat (white and brown)_subscapula,mouse,train,348,22,2,0.025
+mouse_subscapula_18,mouse fat (white and brown)_subscapula,mouse,train,371,26,1,0.047
+mouse_subscapula_19,mouse fat (white and brown)_subscapula,mouse,train,0,18,1,0.0189
+mouse_subscapula_20,mouse fat (white and brown)_subscapula,mouse,train,84,34,0,0.0274
+mouse_subscapula_21,mouse fat (white and brown)_subscapula,mouse,train,7,3,0,0.0004
+mouse_subscapula_22,mouse fat (white and brown)_subscapula,mouse,train,59,4,0,0.0001
+mouse_subscapula_23,mouse fat (white and brown)_subscapula,mouse,train,86,13,0,0.0002
+mouse_subscapula_24,mouse fat (white and brown)_subscapula,mouse,train,167,3,0,0.0001
+mouse_subscapula_25,mouse fat (white and brown)_subscapula,mouse,train,38,6,0,0.0001
+mouse_subscapula_26,mouse fat (white and brown)_subscapula,mouse,train,79,10,0,0.0002
+mouse_subscapula_27,mouse fat (white and brown)_subscapula,mouse,train,414,13,0,0.0103
+mouse_subscapula_28,mouse fat (white and brown)_subscapula,mouse,train,413,13,1,0.0614
+mouse_subscapula_29,mouse fat (white and brown)_subscapula,mouse,train,182,28,0,0.0707
+mouse_subscapula_30,mouse fat (white and brown)_subscapula,mouse,train,150,26,0,0.0091
+mouse_subscapula_31,mouse fat (white and brown)_subscapula,mouse,train,130,31,2,0.0446
+mouse_subscapula_32,mouse fat (white and brown)_subscapula,mouse,train,202,3,0,0.021
+mouse_subscapula_33,mouse fat (white and brown)_subscapula,mouse,train,326,7,0,0.0435
+mouse_subscapula_34,mouse fat (white and brown)_subscapula,mouse,train,159,17,0,0.0688
+mouse_subscapula_35,mouse fat (white and brown)_subscapula,mouse,train,298,4,0,0.0002
+mouse_subscapula_36,mouse fat (white and brown)_subscapula,mouse,train,356,12,0,0.0501
+mouse_subscapula_37,mouse fat (white and brown)_subscapula,mouse,train,295,5,0,0.0346
+mouse_subscapula_38,mouse fat (white and brown)_subscapula,mouse,train,283,1,0,0.0002
+mouse_subscapula_39,mouse fat (white and brown)_subscapula,mouse,train,168,21,0,0.0001
+mouse_subscapula_40,mouse fat (white and brown)_subscapula,mouse,train,33,22,0,0.0241
+mouse_subscapula_41,mouse fat (white and brown)_subscapula,mouse,train,4,26,1,0.0397
+mouse_subscapula_42,mouse fat (white and brown)_subscapula,mouse,train,106,41,1,0.0322
+mouse_femur_01,mouse femur,mouse,train,317,87,0,0.2213
+mouse_femur_02,mouse femur,mouse,train,47,131,0,0.2412
+mouse_femur_03,mouse femur,mouse,train,155,47,1,0.1274
+mouse_femur_04,mouse femur,mouse,train,416,165,0,0.2555
+mouse_femur_05,mouse femur,mouse,train,394,180,1,0.3235
+mouse_femur_06,mouse femur,mouse,train,263,147,0,0.2941
+mouse_heart_01,mouse heart,mouse,train,185,28,0,0.0002
+mouse_heart_02,mouse heart,mouse,train,211,32,0,0.0158
+mouse_heart_03,mouse heart,mouse,train,208,29,0,0.0197
+mouse_heart_04,mouse heart,mouse,train,354,33,2,0.0392
+mouse_heart_05,mouse heart,mouse,train,231,24,1,0.0244
+mouse_heart_06,mouse heart,mouse,train,139,29,1,0.0003
+mouse_heart_07,mouse heart,mouse,train,148,28,0,0.0199
+mouse_heart_08,mouse heart,mouse,train,323,14,1,0.1451
+mouse_heart_09,mouse heart,mouse,train,357,25,0,0.0311
+mouse_heart_10,mouse heart,mouse,train,367,21,0,0.0771
+mouse_heart_11,mouse heart,mouse,train,359,12,0,0.0849
+mouse_heart_12,mouse heart,mouse,train,230,18,0,0.0766
+mouse_heart_13,mouse heart,mouse,train,258,17,2,0.1036
+mouse_heart_14,mouse heart,mouse,train,239,20,2,0.1102
+mouse_heart_15,mouse heart,mouse,train,31,28,0,0.0222
+mouse_heart_16,mouse heart,mouse,train,418,22,0,0.0003
+mouse_heart_17,mouse heart,mouse,train,346,21,0,0.0269
+mouse_heart_18,mouse heart,mouse,train,195,45,1,0.0231
+mouse_heart_19,mouse heart,mouse,train,55,29,0,0.0437
+mouse_heart_20,mouse heart,mouse,train,63,24,0,0.0185
+mouse_heart_21,mouse heart,mouse,train,53,49,0,0.0248
+mouse_heart_22,mouse heart,mouse,train,72,32,1,0.0373
+mouse_heart_23,mouse heart,mouse,train,8,29,0,0.0004
+mouse_heart_24,mouse heart,mouse,train,420,31,1,0.018
+mouse_heart_25,mouse heart,mouse,train,39,29,1,0.0238
+mouse_heart_26,mouse heart,mouse,train,13,26,1,0.0206
+mouse_heart_27,mouse heart,mouse,train,362,15,0,0.0121
+mouse_heart_28,mouse heart,mouse,train,256,28,1,0.0003
+mouse_kidney_01,mouse kidney,mouse,train,111,42,0,0.1297
+mouse_kidney_02,mouse kidney,mouse,train,126,42,0,0.0866
+mouse_kidney_03,mouse kidney,mouse,train,97,44,0,0.0544
+mouse_kidney_04,mouse kidney,mouse,train,314,29,0,0.0666
+mouse_kidney_05,mouse kidney,mouse,train,360,36,1,0.0751
+mouse_kidney_06,mouse kidney,mouse,train,192,37,0,0.1552
+mouse_kidney_07,mouse kidney,mouse,train,85,31,0,0.1593
+mouse_kidney_08,mouse kidney,mouse,train,162,42,0,0.0632
+mouse_kidney_09,mouse kidney,mouse,train,251,40,0,0.021
+mouse_kidney_10,mouse kidney,mouse,train,136,40,1,0.0151
+mouse_kidney_11,mouse kidney,mouse,train,267,29,0,0.0517
+mouse_kidney_12,mouse kidney,mouse,train,156,27,0,0.1107
+mouse_kidney_13,mouse kidney,mouse,train,70,25,0,0.1589
+mouse_kidney_14,mouse kidney,mouse,train,309,33,0,0.0616
+mouse_kidney_15,mouse kidney,mouse,train,6,37,1,0.0872
+mouse_kidney_16,mouse kidney,mouse,train,312,35,0,0.0536
+mouse_kidney_17,mouse kidney,mouse,train,67,26,0,0.0534
+mouse_kidney_18,mouse kidney,mouse,train,376,32,1,0.0596
+mouse_kidney_19,mouse kidney,mouse,train,288,67,0,0.0525
+mouse_kidney_20,mouse kidney,mouse,train,89,34,0,0.0304
+mouse_kidney_21,mouse kidney,mouse,train,37,54,0,0.0207
+mouse_kidney_22,mouse kidney,mouse,train,210,45,2,0.0634
+mouse_kidney_23,mouse kidney,mouse,train,221,52,0,0.0983
+mouse_kidney_24,mouse kidney,mouse,train,339,40,0,0.0333
+mouse_kidney_25,mouse kidney,mouse,train,207,46,0,0.0807
+mouse_kidney_26,mouse kidney,mouse,train,149,55,0,0.1247
+mouse_kidney_27,mouse kidney,mouse,train,183,39,0,0.0613
+mouse_kidney_28,mouse kidney,mouse,train,238,48,1,0.1199
+mouse_kidney_29,mouse kidney,mouse,train,153,41,1,0.0711
+mouse_kidney_30,mouse kidney,mouse,train,395,40,1,0.0734
+mouse_kidney_31,mouse kidney,mouse,train,180,43,0,0.0702
+mouse_kidney_32,mouse kidney,mouse,train,123,50,0,0.052
+mouse_kidney_33,mouse kidney,mouse,train,368,31,0,0.1291
+mouse_kidney_34,mouse kidney,mouse,train,12,49,0,0.1102
+mouse_kidney_35,mouse kidney,mouse,train,151,32,0,0.063
+mouse_kidney_36,mouse kidney,mouse,train,92,35,0,0.1356
+mouse_kidney_37,mouse kidney,mouse,train,291,41,0,0.086
+mouse_kidney_38,mouse kidney,mouse,train,250,31,1,0.0751
+mouse_kidney_39,mouse kidney,mouse,train,407,41,0,0.0833
+mouse_kidney_40,mouse kidney,mouse,train,121,56,0,0.1301
+mouse_liver_01,mouse liver,mouse,val,,15,0,0.2032
+mouse_liver_02,mouse liver,mouse,val,,15,0,0.0907
+mouse_liver_03,mouse liver,mouse,val,,16,0,0.024
+mouse_liver_04,mouse liver,mouse,val,,8,1,0.0914
+mouse_liver_05,mouse liver,mouse,val,,12,0,0.0506
+mouse_liver_06,mouse liver,mouse,val,,18,0,0.0799
+mouse_liver_07,mouse liver,mouse,val,,20,0,0.2372
+mouse_liver_08,mouse liver,mouse,val,,17,0,0.1125
+mouse_liver_09,mouse liver,mouse,val,,14,0,0.1096
+mouse_liver_10,mouse liver,mouse,val,,15,0,0.1168
+mouse_liver_11,mouse liver,mouse,val,,28,0,0.0524
+mouse_liver_12,mouse liver,mouse,val,,22,0,0.1532
+mouse_liver_13,mouse liver,mouse,val,,14,0,0.0869
+mouse_liver_14,mouse liver,mouse,val,,20,0,0.2194
+mouse_liver_15,mouse liver,mouse,val,,14,0,0.1227
+mouse_liver_16,mouse liver,mouse,val,,22,0,0.0002
+mouse_liver_17,mouse liver,mouse,val,,14,0,0.0003
+mouse_liver_18,mouse liver,mouse,val,,12,0,0.0634
+mouse_liver_19,mouse liver,mouse,val,,25,0,0.1535
+mouse_liver_20,mouse liver,mouse,val,,17,0,0.0918
+mouse_liver_21,mouse liver,mouse,val,,13,1,0.1852
+mouse_liver_22,mouse liver,mouse,val,,15,0,0.1486
+mouse_liver_23,mouse liver,mouse,val,,20,0,0.1221
+mouse_liver_24,mouse liver,mouse,val,,21,0,0.0709
+mouse_liver_25,mouse liver,mouse,val,,22,2,0.208
+mouse_liver_26,mouse liver,mouse,val,,22,0,0.0872
+mouse_liver_27,mouse liver,mouse,val,,23,0,0.0966
+mouse_liver_28,mouse liver,mouse,val,,21,0,0.1109
+mouse_liver_29,mouse liver,mouse,val,,12,0,0.0463
+mouse_liver_30,mouse liver,mouse,val,,20,0,0.1115
+mouse_liver_31,mouse liver,mouse,val,,22,0,0.1016
+mouse_liver_32,mouse liver,mouse,val,,29,0,0.1298
+mouse_liver_33,mouse liver,mouse,val,,28,0,0.0565
+mouse_liver_34,mouse liver,mouse,val,,13,0,0.0328
+mouse_liver_35,mouse liver,mouse,val,,12,0,0.0977
+mouse_liver_36,mouse liver,mouse,val,,15,0,0.1748
+mouse_muscle_tibia_01,mouse muscle_tibia,mouse,test,,5,0,0.0346
+mouse_muscle_tibia_02,mouse muscle_tibia,mouse,test,,14,0,0.0005
+mouse_muscle_tibia_03,mouse muscle_tibia,mouse,test,,11,0,0.0106
+mouse_muscle_tibia_04,mouse muscle_tibia,mouse,test,,4,0,0.0445
+mouse_muscle_tibia_05,mouse muscle_tibia,mouse,test,,11,1,0.0003
+mouse_muscle_tibia_06,mouse muscle_tibia,mouse,test,,3,0,0.0002
+mouse_muscle_tibia_07,mouse muscle_tibia,mouse,test,,5,0,0.0221
+mouse_muscle_tibia_08,mouse muscle_tibia,mouse,test,,3,0,0.0233
+mouse_muscle_tibia_09,mouse muscle_tibia,mouse,test,,8,1,0.0935
+mouse_muscle_tibia_10,mouse muscle_tibia,mouse,test,,9,0,0.0555
+mouse_muscle_tibia_11,mouse muscle_tibia,mouse,test,,6,0,0.0482
+mouse_muscle_tibia_12,mouse muscle_tibia,mouse,test,,4,0,0.0
+mouse_muscle_tibia_13,mouse muscle_tibia,mouse,test,,1,0,0.064
+mouse_muscle_tibia_14,mouse muscle_tibia,mouse,test,,14,0,0.0002
+mouse_muscle_tibia_15,mouse muscle_tibia,mouse,test,,6,0,0.1031
+mouse_muscle_tibia_16,mouse muscle_tibia,mouse,test,,9,0,0.0469
+mouse_muscle_tibia_17,mouse muscle_tibia,mouse,test,,8,0,0.1232
+mouse_muscle_tibia_18,mouse muscle_tibia,mouse,test,,7,0,0.0614
+mouse_muscle_tibia_19,mouse muscle_tibia,mouse,test,,2,0,0.0003
+mouse_muscle_tibia_20,mouse muscle_tibia,mouse,test,,2,0,0.0002
+mouse_muscle_tibia_21,mouse muscle_tibia,mouse,test,,4,0,0.0003
+mouse_muscle_tibia_22,mouse muscle_tibia,mouse,test,,5,2,0.0274
+mouse_muscle_tibia_23,mouse muscle_tibia,mouse,test,,7,1,0.0891
+mouse_muscle_tibia_24,mouse muscle_tibia,mouse,test,,3,1,0.0611
+mouse_muscle_tibia_25,mouse muscle_tibia,mouse,test,,4,0,0.0412
+mouse_muscle_tibia_26,mouse muscle_tibia,mouse,test,,2,0,0.0002
+mouse_muscle_tibia_27,mouse muscle_tibia,mouse,test,,2,0,0.0961
+mouse_muscle_tibia_28,mouse muscle_tibia,mouse,test,,6,0,0.0004
+mouse_spleen_01,mouse spleen,mouse,train,127,236,0,0.0417
+mouse_spleen_02,mouse spleen,mouse,train,244,297,0,0.0527
+mouse_spleen_03,mouse spleen,mouse,train,307,200,0,0.0794
+mouse_spleen_04,mouse spleen,mouse,train,425,241,0,0.0423
+mouse_spleen_05,mouse spleen,mouse,train,344,227,0,0.0635
+mouse_spleen_06,mouse spleen,mouse,train,255,245,0,0.0765
+mouse_spleen_07,mouse spleen,mouse,train,287,211,0,0.0464
+mouse_thymus_01,mouse thymus,mouse,test,,245,0,0.0865
+mouse_thymus_02,mouse thymus,mouse,test,,183,0,0.0714
+mouse_thymus_03,mouse thymus,mouse,test,,201,0,0.0991
+mouse_thymus_04,mouse thymus,mouse,test,,180,0,0.1051
+mouse_thymus_05,mouse thymus,mouse,test,,255,0,0.058
+mouse_thymus_06,mouse thymus,mouse,test,,278,0,0.0961

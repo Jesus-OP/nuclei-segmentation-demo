@@ -36,6 +36,18 @@ def drop_small(labels: np.ndarray, min_area: int) -> np.ndarray:
     return out
 
 
+def drop_in_mask(labels: np.ndarray, mask: np.ndarray, min_frac: float = 0.5) -> np.ndarray:
+    """Set to background the objects with >= min_frac of their pixels inside `mask`
+    (e.g. NuInsSeg "ambiguous areas"). Labels are not renumbered."""
+    areas = np.bincount(labels.ravel())
+    inside = np.bincount(labels[mask > 0].ravel(), minlength=len(areas))
+    drop = inside >= min_frac * np.maximum(areas, 1)
+    drop[0] = False
+    out = labels.copy()
+    out[drop[labels]] = 0
+    return out
+
+
 def image_counts(gt: np.ndarray, pred: np.ndarray) -> dict:
     """{(variant, thr): (tp, fp, fn)} for one image, plus {(variant, "iou_sum"): float},
     the summed IoU of the pairs matched at IoU >= 0.5."""
@@ -108,17 +120,23 @@ def stems_of(data: Path, split: str) -> list[str]:
 
 
 def _counts_from_files(args):
-    gt_path, pred_path = args
-    return image_counts(tifffile.imread(gt_path), tifffile.imread(pred_path))
+    gt_path, pred_path, *ignore = args
+    gt, pred = tifffile.imread(gt_path), tifffile.imread(pred_path)
+    if ignore and ignore[0] is not None:
+        mask = tifffile.imread(ignore[0])
+        gt, pred = drop_in_mask(gt, mask), drop_in_mask(pred, mask)
+    return image_counts(gt, pred)
 
 
 def evaluate_dir(data: Path, pred_dir: Path, split: str, workers: int = 4,
-                 exclude: set[str] | None = None):
+                 exclude: set[str] | None = None, ignore_dir: Path | None = None):
     """Evaluate every `<stem>.tif` label image in pred_dir against the reference.
 
     Returns (summary, per_image DataFrame). Raises if a prediction is missing, so a
     partial folder can never be reported as a full-split result. `exclude`: stems left
     out on purpose (e.g. images seen by a pretrained model during its training).
+    `ignore_dir`: optional `<stem>.tif` masks of regions to ignore; reference and predicted
+    objects mostly inside them are removed before matching (bioseg.evaluation.drop_in_mask).
     """
     data, pred_dir = Path(data), Path(pred_dir)
     stems = [s for s in stems_of(data, split) if s not in (exclude or set())]
@@ -126,7 +144,8 @@ def evaluate_dir(data: Path, pred_dir: Path, split: str, workers: int = 4,
     if missing:
         raise FileNotFoundError(f"{len(missing)} predicciones faltan en {pred_dir}, "
                                 f"p. ej. {missing[0]}.tif")
-    jobs = [(data / "labels" / f"{s}.tif", pred_dir / f"{s}.tif") for s in stems]
+    jobs = [(data / "labels" / f"{s}.tif", pred_dir / f"{s}.tif",
+             Path(ignore_dir) / f"{s}.tif" if ignore_dir else None) for s in stems]
     with ProcessPoolExecutor(workers) as ex:
         counts = list(ex.map(_counts_from_files, jobs, chunksize=4))
     per_image = pd.DataFrame([{"stem": s, **flat(summarize([c]))}

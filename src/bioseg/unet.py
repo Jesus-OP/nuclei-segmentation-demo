@@ -77,12 +77,18 @@ class UNet(nn.Module):
 
 @torch.no_grad()
 def predict_probs(model: UNet, img: np.ndarray, device) -> np.ndarray:
-    """Full-image softmax probabilities (3, H, W); reflect-pads to a multiple of 2**depth."""
+    """Full-image softmax probabilities (3, H, W); reflect-pads to a multiple of 2**depth.
+
+    img: (H, W) single channel, or (H, W, C) colour (e.g. RGB H&E, model built with
+    in_ch=C). Colour images are normalized jointly over all channels (keeps stain ratios).
+    """
     m = 2 ** model.depth
-    h, w = img.shape
+    h, w = img.shape[:2]
     ph, pw = (-h) % m, (-w) % m
-    x = np.pad(normalize(img), ((0, ph), (0, pw)), mode="reflect")
-    x = torch.from_numpy(x)[None, None].to(device)
+    x = normalize(img)
+    x = x[None] if x.ndim == 2 else np.moveaxis(x, -1, 0)
+    x = np.pad(x, ((0, 0), (0, ph), (0, pw)), mode="reflect")
+    x = torch.from_numpy(np.ascontiguousarray(x))[None].to(device)
     probs = torch.softmax(model(x), 1)[0, :, :h, :w]
     return probs.cpu().numpy()
 
